@@ -51,7 +51,7 @@ export const projects = [
       "The project shows product thinking as much as data science skill by connecting feature engineering, supervised forecasting, business rules, testing, and a usable interface in one end-to-end workflow.",
     stack: ["Python", "Streamlit", "Forecasting", "Inventory Logic", "Testing"],
     github: "https://github.com/Pranavojhaa/Smart_stock",
-    demo: "mailto:pranavojha456@gmail.com?subject=SmartStock%20Demo",
+    demo: "https://smartstock.pranavojha.com/",
     highlight: "Forecasting product",
     featured: true,
   },
