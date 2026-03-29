@@ -12,11 +12,11 @@ export function ProjectCard({ project, index, onOpen }) {
       onClick={() => onOpen(project)}
       className={`group relative cursor-pointer overflow-hidden rounded-[28px] border p-6 backdrop-blur-xl transition ${
         project.featured
-          ? "border-accent/30 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.04))] shadow-glow"
-          : "border-white/10 bg-white/[0.04]"
+          ? "border-accent/20 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(243,247,255,0.92))] shadow-glow"
+          : "border-line bg-white/72"
       }`}
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(110,123,255,0.12),transparent_36%)] opacity-0 transition group-hover:opacity-100" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(49,94,251,0.10),transparent_36%)] opacity-0 transition group-hover:opacity-100" />
       <div className="relative flex h-full flex-col">
         <div className="flex items-start justify-between gap-4">
           <div>
@@ -36,14 +36,14 @@ export function ProjectCard({ project, index, onOpen }) {
           {project.stack.map((item) => (
             <span
               key={item}
-              className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-xs font-medium text-white/82"
+              className="rounded-full border border-line bg-white px-3 py-1.5 text-xs font-medium text-slate"
             >
               {item}
             </span>
           ))}
         </div>
 
-        <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-5">
+        <div className="mt-8 flex items-center justify-between border-t border-line pt-5">
           <button
             type="button"
             onClick={() => onOpen(project)}

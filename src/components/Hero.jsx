@@ -31,7 +31,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.1 }}
-            className="mt-6 max-w-3xl text-2xl font-medium tracking-[-0.04em] text-white sm:text-3xl"
+            className="mt-6 max-w-3xl text-2xl font-medium tracking-[-0.04em] text-ink sm:text-3xl"
           >
             {hero.tagline}
           </motion.p>
@@ -62,14 +62,14 @@ export function Hero() {
               href={hero.github}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-semibold text-ink transition hover:border-white/20 hover:bg-white/[0.06]"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-white/75 px-6 py-3 text-sm font-semibold text-ink transition hover:bg-white"
             >
               <Github size={16} />
               GitHub
             </a>
             <a
               href={hero.resume}
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-transparent px-6 py-3 text-sm font-semibold text-slate transition hover:border-white/20 hover:text-ink"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-transparent px-6 py-3 text-sm font-semibold text-slate transition hover:bg-white/60 hover:text-ink"
             >
               <FileText size={16} />
               Resume
@@ -81,7 +81,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.12 }}
-          className="rounded-[32px] border border-white/12 bg-white/[0.05] p-6 shadow-glow backdrop-blur-xl"
+          className="rounded-[32px] border border-line bg-white/72 p-6 shadow-glow backdrop-blur-xl"
         >
           <p className="text-xs font-semibold uppercase tracking-[0.32em] text-accent">
             Live projects
@@ -91,7 +91,7 @@ export function Hero() {
               <a
                 key={project.title}
                 href="#projects"
-                className="block rounded-[24px] border border-white/10 bg-white/[0.04] p-5 transition hover:border-white/20 hover:bg-white/[0.07]"
+                className="block rounded-[24px] border border-line bg-white/70 p-5 transition hover:bg-white"
               >
                 <p className="text-xs uppercase tracking-[0.26em] text-white/45">{project.highlight}</p>
                 <h2 className="mt-3 text-xl font-semibold tracking-tight text-ink">{project.title}</h2>

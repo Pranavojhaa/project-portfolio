@@ -17,7 +17,7 @@ export function ContactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.45 }}
-          className="rounded-[28px] border border-white/12 bg-white/[0.05] p-6 shadow-glow"
+          className="rounded-[28px] border border-line bg-white/76 p-6 shadow-glow"
         >
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Open to opportunities</p>
           <h3 className="mt-4 max-w-xl font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
@@ -39,7 +39,7 @@ export function ContactSection() {
             </a>
             <a
               href={`mailto:${hero.email}`}
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/12 bg-white/[0.05] px-6 py-3 text-sm font-semibold text-ink transition hover:border-white/20 hover:bg-white/[0.08]"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-white px-6 py-3 text-sm font-semibold text-ink transition hover:bg-white"
             >
               Send an Email
             </a>
@@ -57,7 +57,7 @@ export function ContactSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.45, delay: index * 0.05 }}
-              className="group rounded-[24px] border border-white/12 bg-white/[0.05] p-5 transition hover:border-white/20 hover:bg-white/[0.08]"
+              className="group rounded-[24px] border border-line bg-white/76 p-5 transition hover:bg-white"
             >
               <p className="text-xs uppercase tracking-[0.28em] text-white/45">{card.label}</p>
               <div className="mt-3 flex items-center justify-between gap-4">

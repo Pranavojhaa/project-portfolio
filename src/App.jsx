@@ -15,10 +15,10 @@ function App() {
   const [selectedProject, setSelectedProject] = useState(null);
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-[linear-gradient(180deg,#0a1230_0%,#101937_45%,#0b1430_100%)] text-ink">
+    <div className="min-h-screen overflow-x-hidden bg-[linear-gradient(180deg,#f9fbff_0%,#f3f7ff_45%,#eef4ff_100%)] text-ink">
       <div className="fixed inset-0 -z-10 bg-grid bg-[size:48px_48px] opacity-[0.035]" />
-      <div className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_14%_12%,rgba(137,150,255,0.26),transparent_24%),radial-gradient(circle_at_82%_18%,rgba(47,243,199,0.12),transparent_20%),radial-gradient(circle_at_50%_58%,rgba(255,255,255,0.06),transparent_28%)]" />
-      <div className="pointer-events-none fixed inset-x-0 top-0 -z-10 h-40 bg-[linear-gradient(180deg,rgba(10,18,48,0.92),rgba(10,18,48,0))]" />
+      <div className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_14%_12%,rgba(49,94,251,0.16),transparent_24%),radial-gradient(circle_at_82%_18%,rgba(20,184,166,0.10),transparent_20%),radial-gradient(circle_at_50%_58%,rgba(255,255,255,0.72),transparent_28%)]" />
+      <div className="pointer-events-none fixed inset-x-0 top-0 -z-10 h-40 bg-[linear-gradient(180deg,rgba(249,251,255,0.94),rgba(249,251,255,0))]" />
 
       <Navbar />
       <Hero />
@@ -45,7 +45,7 @@ function App() {
               ].map(([title, copy]) => (
                 <div
                   key={title}
-                  className="rounded-[24px] border border-white/10 bg-white/[0.025] p-5"
+                  className="rounded-[24px] border border-line bg-white/70 p-5 shadow-glow backdrop-blur-sm"
                 >
                   <p className="text-sm font-semibold text-ink">{title}</p>
                   <p className="mt-3 text-sm leading-7 text-slate">{copy}</p>

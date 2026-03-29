@@ -3,7 +3,7 @@ import { hero } from "../data/portfolio";
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/10 px-4 py-10 sm:px-6">
+    <footer className="border-t border-line px-4 py-10 sm:px-6">
       <div className="mx-auto flex w-full max-w-7xl flex-col items-start justify-between gap-5 sm:flex-row sm:items-center">
         <div>
           <p className="font-display text-lg font-semibold text-ink">{hero.name}</p>
