@@ -83,7 +83,7 @@ export const projects = [
       "The project demonstrates practical automation thinking: start simple, inspect the page, and escalate only when the content actually needs a heavier scraping path.",
     stack: ["Python", "BeautifulSoup", "Requests", "Selenium"],
     github: "https://github.com/Pranavojhaa/WebscrapeAI",
-    demo: "mailto:pranavojha456@gmail.com?subject=WebscrapeAI%20Demo",
+    demo: "https://webscrapeai.pranavojha.com/",
     highlight: "Automation pipeline",
     featured: false,
   },
