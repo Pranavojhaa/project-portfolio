@@ -4,24 +4,24 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: "#101828",
-        slate: "#516074",
-        line: "rgba(16,24,40,0.08)",
-        panel: "rgba(255,255,255,0.72)",
-        accent: "#315EFB",
-        accentSoft: "#14B8A6",
-        base: "#F7FAFF",
-        baseAlt: "#EEF4FF",
+        ink: "#E5E7EB",
+        slate: "#9CA3AF",
+        line: "#1F2937",
+        panel: "#111827",
+        accent: "#3B82F6",
+        accentSoft: "#8B5CF6",
+        base: "#0B0F14",
+        baseAlt: "#111827",
       },
       fontFamily: {
         sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
         display: ["Sora", "Inter", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        glow: "0 0 0 1px rgba(16,24,40,0.04), 0 18px 48px rgba(79,102,145,0.12)",
+        glow: "0 0 0 1px rgba(59,130,246,0.10), 0 18px 48px rgba(0,0,0,0.28)",
       },
       backgroundImage: {
-        grid: "linear-gradient(rgba(49,94,251,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(49,94,251,0.06) 1px, transparent 1px)",
+        grid: "linear-gradient(rgba(59,130,246,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.06) 1px, transparent 1px)",
       },
     },
   },

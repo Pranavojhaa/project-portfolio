@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
-import { ArrowRight, FileText, Github } from "lucide-react";
+import { ArrowRight, Braces, DatabaseZap, FileText, Github, ScanSearch } from "lucide-react";
 import { hero, projects } from "../data/portfolio";
 
 export function Hero() {
   const featuredProjects = projects.filter((project) => project.featured).slice(0, 2);
 
   return (
-    <section id="top" className="px-4 pb-20 pt-12 sm:px-6 sm:pb-24 sm:pt-20">
-      <div className="mx-auto grid w-full max-w-7xl gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+    <section id="top" className="px-4 pb-24 pt-12 sm:px-6 sm:pb-28 sm:pt-20">
+      <div className="mx-auto grid w-full max-w-7xl gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <div>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -62,14 +62,14 @@ export function Hero() {
               href={hero.github}
               target="_blank"
               rel="noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-white/75 px-6 py-3 text-sm font-semibold text-ink transition hover:bg-white"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-[rgba(255,255,255,0.02)] px-6 py-3 text-sm font-semibold text-ink transition hover:border-accent/40 hover:bg-[rgba(59,130,246,0.08)]"
             >
               <Github size={16} />
               GitHub
             </a>
             <a
               href={hero.resume}
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-transparent px-6 py-3 text-sm font-semibold text-slate transition hover:bg-white/60 hover:text-ink"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-transparent px-6 py-3 text-sm font-semibold text-slate transition hover:border-accentSoft/40 hover:bg-[rgba(139,92,246,0.08)] hover:text-ink"
             >
               <FileText size={16} />
               Resume
@@ -81,23 +81,45 @@ export function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.12 }}
-          className="rounded-[32px] border border-line bg-white/72 p-6 shadow-glow backdrop-blur-xl"
+          className="grid gap-4 rounded-[32px] border border-line bg-panel p-6 shadow-glow"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.32em] text-accent">
-            Live projects
-          </p>
-          <div className="mt-6 space-y-4">
-            {featuredProjects.map((project) => (
-              <a
-                key={project.title}
-                href="#projects"
-                className="block rounded-[24px] border border-line bg-white/70 p-5 transition hover:bg-white"
-              >
-                <p className="text-xs uppercase tracking-[0.26em] text-slate">{project.highlight}</p>
-                <h2 className="mt-3 text-xl font-semibold tracking-tight text-ink">{project.title}</h2>
-                <p className="mt-3 text-sm leading-7 text-slate">{project.summary}</p>
-              </a>
-            ))}
+          <div className="grid gap-4 sm:grid-cols-2">
+            {[
+              { label: "Search", value: "Notes, pages, and signals", icon: ScanSearch },
+              { label: "Model", value: "Forecasts to decisions", icon: DatabaseZap },
+            ].map((item) => {
+              const Icon = item.icon;
+              return (
+                <div key={item.label} className="rounded-[24px] border border-line bg-[rgba(255,255,255,0.02)] p-5">
+                  <Icon size={18} className="text-accent" />
+                  <p className="mt-4 text-xs font-semibold uppercase tracking-[0.26em] text-slate">
+                    {item.label}
+                  </p>
+                  <p className="mt-2 text-sm leading-7 text-ink">{item.value}</p>
+                </div>
+              );
+            })}
+          </div>
+          <div className="rounded-[24px] border border-line bg-[linear-gradient(135deg,rgba(59,130,246,0.10),rgba(139,92,246,0.08))] p-5">
+            <div className="flex items-center gap-3">
+              <Braces size={18} className="text-accentSoft" />
+              <p className="text-xs font-semibold uppercase tracking-[0.26em] text-slate">
+                Featured Builds
+              </p>
+            </div>
+            <div className="mt-4 grid gap-3">
+              {featuredProjects.map((project) => (
+                <a
+                  key={project.title}
+                  href="#projects"
+                  className="rounded-[20px] border border-line bg-[rgba(11,15,20,0.35)] p-4 transition hover:border-accent/30 hover:bg-[rgba(17,24,39,0.9)]"
+                >
+                  <p className="text-xs uppercase tracking-[0.24em] text-slate">{project.highlight}</p>
+                  <h2 className="mt-2 text-lg font-semibold text-ink">{project.title}</h2>
+                  <p className="mt-2 text-sm leading-6 text-slate">{project.summary}</p>
+                </a>
+              ))}
+            </div>
           </div>
         </motion.aside>
       </div>

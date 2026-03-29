@@ -30,7 +30,7 @@ export function ProjectOverlay({ project, onClose }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[60] flex items-end justify-center bg-[rgba(240,245,255,0.72)] p-4 backdrop-blur-md sm:items-center"
+          className="fixed inset-0 z-[60] flex items-end justify-center bg-[rgba(11,15,20,0.78)] p-4 backdrop-blur-md sm:items-center"
           onClick={onClose}
         >
           <motion.div
@@ -39,12 +39,12 @@ export function ProjectOverlay({ project, onClose }) {
             exit={{ opacity: 0, y: 16, scale: 0.98 }}
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
             onClick={(event) => event.stopPropagation()}
-            className="relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-[32px] border border-line bg-[#f8fbff] p-6 shadow-[0_30px_100px_rgba(79,102,145,0.18)] sm:p-8"
+            className="relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-[32px] border border-line bg-[#111827] p-6 shadow-[0_30px_100px_rgba(0,0,0,0.45)] sm:p-8"
           >
             <button
               type="button"
               onClick={onClose}
-              className="absolute right-4 top-4 inline-flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white text-slate transition hover:text-ink"
+              className="absolute right-4 top-4 inline-flex h-11 w-11 items-center justify-center rounded-full border border-line bg-[rgba(255,255,255,0.03)] text-slate transition hover:text-ink"
               aria-label="Close project details"
             >
               <X size={18} />
@@ -64,7 +64,7 @@ export function ProjectOverlay({ project, onClose }) {
               {project.stack.map((item) => (
                 <span
                   key={item}
-                  className="rounded-full border border-line bg-white px-3 py-1.5 text-xs font-medium text-slate"
+                  className="rounded-full border border-line bg-[rgba(255,255,255,0.03)] px-3 py-1.5 text-xs font-medium text-slate"
                 >
                   {item}
                 </span>
@@ -72,17 +72,17 @@ export function ProjectOverlay({ project, onClose }) {
             </div>
 
             <div className="mt-10 grid gap-5 md:grid-cols-2">
-              <div className="rounded-[24px] border border-line bg-white p-5">
+              <div className="rounded-[24px] border border-line bg-[rgba(255,255,255,0.02)] p-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Problem</p>
                 <p className="mt-3 text-sm leading-7 text-slate">{project.problem}</p>
               </div>
-              <div className="rounded-[24px] border border-line bg-white p-5">
+              <div className="rounded-[24px] border border-line bg-[rgba(255,255,255,0.02)] p-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">What It Does</p>
                 <p className="mt-3 text-sm leading-7 text-slate">{project.solution}</p>
               </div>
             </div>
 
-            <div className="mt-5 rounded-[24px] border border-line bg-white p-5">
+            <div className="mt-5 rounded-[24px] border border-line bg-[rgba(255,255,255,0.02)] p-5">
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Why It Matters</p>
               <p className="mt-3 text-sm leading-7 text-slate">{project.outcome}</p>
             </div>
@@ -101,7 +101,7 @@ export function ProjectOverlay({ project, onClose }) {
                 href={project.demo}
                 target={project.demo.startsWith("http") ? "_blank" : undefined}
                 rel={project.demo.startsWith("http") ? "noreferrer" : undefined}
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-white px-6 py-3 text-sm font-semibold text-ink transition hover:bg-white"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-[rgba(255,255,255,0.03)] px-6 py-3 text-sm font-semibold text-ink transition hover:border-accent/40 hover:bg-[rgba(255,255,255,0.06)]"
               >
                 <ExternalLink size={16} />
                 Demo / Contact

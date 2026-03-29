@@ -10,13 +10,13 @@ export function ProjectCard({ project, index, onOpen }) {
       transition={{ duration: 0.45, delay: index * 0.06 }}
       whileHover={{ y: -4 }}
       onClick={() => onOpen(project)}
-      className={`group relative cursor-pointer overflow-hidden rounded-[28px] border p-6 backdrop-blur-xl transition ${
+      className={`group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-[28px] border p-6 transition ${
         project.featured
-          ? "border-accent/20 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(243,247,255,0.92))] shadow-glow"
-          : "border-line bg-white/72"
+          ? "border-accent/25 bg-[linear-gradient(180deg,rgba(17,24,39,1),rgba(15,23,42,1))] shadow-glow"
+          : "border-line bg-panel"
       }`}
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(49,94,251,0.10),transparent_36%)] opacity-0 transition group-hover:opacity-100" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.16),transparent_38%)] opacity-0 transition group-hover:opacity-100" />
       <div className="relative flex h-full flex-col">
         <div className="flex items-start justify-between gap-4">
           <div>
@@ -36,14 +36,14 @@ export function ProjectCard({ project, index, onOpen }) {
           {project.stack.map((item) => (
             <span
               key={item}
-              className="rounded-full border border-line bg-white px-3 py-1.5 text-xs font-medium text-slate"
+              className="rounded-full border border-line bg-[rgba(255,255,255,0.03)] px-3 py-1.5 text-xs font-medium text-slate"
             >
               {item}
             </span>
           ))}
         </div>
 
-        <div className="mt-8 flex items-center justify-between border-t border-line pt-5">
+        <div className="mt-auto flex items-center justify-between border-t border-line pt-5">
           <button
             type="button"
             onClick={() => onOpen(project)}

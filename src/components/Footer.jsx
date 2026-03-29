@@ -22,6 +22,14 @@ export function Footer() {
             GitHub
           </a>
           <a
+            href={hero.website}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 transition hover:text-ink"
+          >
+            Website
+          </a>
+          <a
             href={`mailto:${hero.email}`}
             className="inline-flex items-center gap-2 transition hover:text-ink"
           >

@@ -8,26 +8,26 @@ export function ContactSection() {
     <Section
       id="contact"
       eyebrow="Contact"
-      title="Want the links without the friction?"
-      description="Everything important lives here: live demos, GitHub, the latest resume, and a direct path to reach out."
+      title="Everything important, in one place."
+      description="Live demos, GitHub, the latest resume, and a direct way to get in touch."
     >
-      <div className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
+      <div className="rounded-[32px] border border-line bg-[linear-gradient(135deg,rgba(59,130,246,0.12),rgba(139,92,246,0.10))] p-6 sm:p-8">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.45 }}
-          className="rounded-[28px] border border-line bg-white/76 p-6 shadow-glow"
+          className="mx-auto max-w-3xl text-center"
         >
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Open to opportunities</p>
-          <h3 className="mt-4 max-w-xl font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+          <h3 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
             Looking for internships, AI product work, and systems-heavy builder roles.
           </h3>
-          <p className="mt-4 max-w-2xl text-sm leading-7 text-slate sm:text-base">
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate sm:text-base">
             Especially interested in applied AI, developer tools, automation, and data products
             that turn raw information into something interactive and useful.
           </p>
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+          <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
             <a
               href={hero.github}
               target="_blank"
@@ -39,14 +39,14 @@ export function ContactSection() {
             </a>
             <a
               href={`mailto:${hero.email}`}
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-white px-6 py-3 text-sm font-semibold text-ink transition hover:bg-white"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-[rgba(255,255,255,0.03)] px-6 py-3 text-sm font-semibold text-ink transition hover:border-accent/40 hover:bg-[rgba(255,255,255,0.06)]"
             >
               Send an Email
             </a>
           </div>
         </motion.div>
 
-        <div className="grid gap-4">
+        <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {contactCards.map((card, index) => (
             <motion.a
               key={card.label}
@@ -57,7 +57,7 @@ export function ContactSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.45, delay: index * 0.05 }}
-              className="group rounded-[24px] border border-line bg-white/76 p-5 transition hover:bg-white"
+              className="group rounded-[24px] border border-line bg-[rgba(17,24,39,0.75)] p-5 text-left transition hover:border-accent/30 hover:bg-[rgba(17,24,39,0.9)]"
             >
               <p className="text-xs uppercase tracking-[0.28em] text-slate">{card.label}</p>
               <div className="mt-3 flex items-center justify-between gap-4">
