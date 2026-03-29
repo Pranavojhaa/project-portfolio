@@ -93,7 +93,7 @@ export function Hero() {
                 href="#projects"
                 className="block rounded-[24px] border border-line bg-white/70 p-5 transition hover:bg-white"
               >
-                <p className="text-xs uppercase tracking-[0.26em] text-white/45">{project.highlight}</p>
+                <p className="text-xs uppercase tracking-[0.26em] text-slate">{project.highlight}</p>
                 <h2 className="mt-3 text-xl font-semibold tracking-tight text-ink">{project.title}</h2>
                 <p className="mt-3 text-sm leading-7 text-slate">{project.summary}</p>
               </a>

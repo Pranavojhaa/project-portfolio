@@ -59,7 +59,7 @@ export function ContactSection() {
               transition={{ duration: 0.45, delay: index * 0.05 }}
               className="group rounded-[24px] border border-line bg-white/76 p-5 transition hover:bg-white"
             >
-              <p className="text-xs uppercase tracking-[0.28em] text-white/45">{card.label}</p>
+              <p className="text-xs uppercase tracking-[0.28em] text-slate">{card.label}</p>
               <div className="mt-3 flex items-center justify-between gap-4">
                 <p className="text-base font-medium text-ink">{card.value}</p>
                 <ArrowUpRight size={18} className="text-slate transition group-hover:text-ink" />
