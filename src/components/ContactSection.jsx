@@ -8,8 +8,8 @@ export function ContactSection() {
     <Section
       id="contact"
       eyebrow="Contact"
-      title="A simple next step for recruiters."
-      description="Everything important is one click away: projects, GitHub, resume, and direct contact."
+      title="Want the links without the friction?"
+      description="Everything important lives here: live demos, GitHub, the latest resume, and a direct path to reach out."
     >
       <div className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
         <motion.div
@@ -21,11 +21,11 @@ export function ContactSection() {
         >
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Open to opportunities</p>
           <h3 className="mt-4 max-w-xl font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-            Looking for internships and product-minded AI work.
+            Looking for internships, AI product work, and systems-heavy builder roles.
           </h3>
           <p className="mt-4 max-w-2xl text-sm leading-7 text-slate sm:text-base">
-            Especially interested in applied AI, automation, developer tools, and systems that
-            turn raw information into usable products.
+            Especially interested in applied AI, developer tools, automation, and data products
+            that turn raw information into something interactive and useful.
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
             <a

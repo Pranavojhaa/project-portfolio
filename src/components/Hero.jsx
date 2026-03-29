@@ -15,7 +15,7 @@ export function Hero() {
             transition={{ duration: 0.55 }}
             className="mb-5 text-xs font-semibold uppercase tracking-[0.32em] text-accent"
           >
-            Computer Science + Data Science
+            AI + Systems Builder
           </motion.p>
 
           <motion.h1
@@ -84,7 +84,7 @@ export function Hero() {
           className="rounded-[32px] border border-white/12 bg-white/[0.05] p-6 shadow-glow backdrop-blur-xl"
         >
           <p className="text-xs font-semibold uppercase tracking-[0.32em] text-accent">
-            Selected work
+            Live projects
           </p>
           <div className="mt-6 space-y-4">
             {featuredProjects.map((project) => (

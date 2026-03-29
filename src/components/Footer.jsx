@@ -8,7 +8,7 @@ export function Footer() {
         <div>
           <p className="font-display text-lg font-semibold text-ink">{hero.name}</p>
           <p className="mt-1 text-sm text-slate">
-            Building AI applications, automation systems, and practical developer-facing tools.
+            Building AI applications, automation systems, and sharp little products for real use cases.
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-4 text-sm text-slate">

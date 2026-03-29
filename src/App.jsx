@@ -28,7 +28,7 @@ function App() {
           <Section
             id="about"
             eyebrow="About"
-            title="Building useful systems around AI and information."
+            title="Building tools where AI meets usable systems."
             description={about}
           >
             <motion.div
@@ -39,9 +39,9 @@ function App() {
               className="grid gap-4 md:grid-cols-3"
             >
               {[
-                ["AI Applications", "LLM-powered tools designed around real use cases instead of novelty."],
-                ["Automation", "Scraping and workflow logic that reduces manual effort and improves structure."],
-                ["Data Processing", "Interfaces and systems that make unstructured information more usable."],
+                ["AI Applications", "LLM-powered products designed to be useful, not just impressive in a demo."],
+                ["Automation", "Scraping and workflow systems that reduce manual effort and create structure."],
+                ["Data Products", "Interfaces that turn messy information into something you can search, inspect, and act on."],
               ].map(([title, copy]) => (
                 <div
                   key={title}
@@ -57,8 +57,8 @@ function App() {
           <Section
             id="projects"
             eyebrow="Projects"
-            title="Selected projects."
-            description="Each project is framed like a product: clear purpose, practical implementation, and a direct explanation of why it matters."
+            title="Projects that feel like products."
+            description="Each one is built to show working systems, not just isolated code: clear purpose, thoughtful implementation, and an obvious reason to exist."
           >
             <div className="grid gap-6 lg:grid-cols-2">
               {projects.map((project, index) => (
@@ -75,8 +75,8 @@ function App() {
           <Section
             id="skills"
             eyebrow="Skills"
-            title="Core tools and technologies."
-            description="A compact technical snapshot. Kept intentionally quieter than the project work."
+            title="The technical stack behind the work."
+            description="A compact snapshot of the languages, frameworks, tools, and concepts showing up across the projects."
           >
             <div className="grid gap-4 md:grid-cols-2">
               {skills.map((skill, index) => (
@@ -88,8 +88,8 @@ function App() {
           <Section
             id="experience"
             eyebrow="Experience"
-            title="Experience and leadership."
-            description="A short view of teaching, student leadership, and technical community involvement."
+            title="Leadership, teaching, and community."
+            description="A short view of the places where I have built communities, helped other students level up, and taken ownership outside project work."
           >
             <div className="grid gap-4 md:grid-cols-2">
               {experience.map((item, index) => (
