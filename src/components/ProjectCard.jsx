@@ -43,7 +43,7 @@ export function ProjectCard({ project, index, onOpen }) {
           ))}
         </div>
 
-        <div className="mt-auto flex items-center justify-between border-t border-line pt-5">
+        <div className="mt-auto flex items-center justify-between gap-4 border-t border-line pt-5">
           <button
             type="button"
             onClick={() => onOpen(project)}
@@ -51,16 +51,18 @@ export function ProjectCard({ project, index, onOpen }) {
           >
             Open Case Study
           </button>
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noreferrer"
-            onClick={(event) => event.stopPropagation()}
-            className="inline-flex items-center gap-2 text-sm font-medium text-slate transition hover:text-ink"
-          >
-            <Github size={15} />
-            GitHub
-          </a>
+          {project.github ? (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noreferrer"
+              onClick={(event) => event.stopPropagation()}
+              className="inline-flex items-center gap-2 text-sm font-medium text-slate transition hover:text-ink"
+            >
+              <Github size={15} />
+              GitHub
+            </a>
+          ) : null}
         </div>
       </div>
     </motion.article>

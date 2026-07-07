@@ -9,7 +9,7 @@ export function ContactSection() {
       id="contact"
       eyebrow="Contact"
       title="Everything important, in one place."
-      description="Live demos, GitHub, the latest resume, and a direct way to get in touch."
+      description="Portfolio links, GitHub, the latest resume, and direct ways to get in touch."
     >
       <div className="rounded-[32px] border border-line bg-[linear-gradient(135deg,rgba(59,130,246,0.12),rgba(139,92,246,0.10))] p-6 sm:p-8">
         <motion.div
@@ -21,11 +21,11 @@ export function ContactSection() {
         >
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Open to opportunities</p>
           <h3 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-            Looking for internships, AI product work, and systems-heavy builder roles.
+            Open to engineering, AI product, automation, and data systems work.
           </h3>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate sm:text-base">
-            Especially interested in applied AI, developer tools, automation, and data products
-            that turn raw information into something interactive and useful.
+            Especially interested in full-stack platforms, backend data pipelines,
+            developer tools, and applied AI systems that move from prototype to production.
           </p>
           <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
             <a
@@ -46,7 +46,7 @@ export function ContactSection() {
           </div>
         </motion.div>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
           {contactCards.map((card, index) => (
             <motion.a
               key={card.label}

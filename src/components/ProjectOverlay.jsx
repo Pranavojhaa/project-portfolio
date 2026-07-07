@@ -88,24 +88,28 @@ export function ProjectOverlay({ project, onClose }) {
             </div>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-semibold text-base transition hover:translate-y-[-1px] hover:bg-white"
-              >
-                <Github size={16} />
-                View Repository
-              </a>
-              <a
-                href={project.demo}
-                target={project.demo.startsWith("http") ? "_blank" : undefined}
-                rel={project.demo.startsWith("http") ? "noreferrer" : undefined}
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-[rgba(255,255,255,0.03)] px-6 py-3 text-sm font-semibold text-ink transition hover:border-accent/40 hover:bg-[rgba(255,255,255,0.06)]"
-              >
-                <ExternalLink size={16} />
-                Demo / Contact
-              </a>
+              {project.github ? (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-semibold text-base transition hover:translate-y-[-1px] hover:bg-white"
+                >
+                  <Github size={16} />
+                  View Repository
+                </a>
+              ) : null}
+              {project.demo ? (
+                <a
+                  href={project.demo}
+                  target={project.demo.startsWith("http") ? "_blank" : undefined}
+                  rel={project.demo.startsWith("http") ? "noreferrer" : undefined}
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-[rgba(255,255,255,0.03)] px-6 py-3 text-sm font-semibold text-ink transition hover:border-accent/40 hover:bg-[rgba(255,255,255,0.06)]"
+                >
+                  <ExternalLink size={16} />
+                  Demo / Contact
+                </a>
+              ) : null}
             </div>
           </motion.div>
         </motion.div>

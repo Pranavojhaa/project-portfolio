@@ -10,29 +10,29 @@ import { ProjectOverlay } from "./components/ProjectOverlay";
 import { Section } from "./components/Section";
 import { SkillCard } from "./components/SkillCard";
 import { ExperienceCard } from "./components/ExperienceCard";
-import { about, experience, projects, skills } from "./data/portfolio";
+import { about, education, experience, projects, skills } from "./data/portfolio";
 
 function App() {
   const [selectedProject, setSelectedProject] = useState(null);
   const valueItems = [
     {
-      title: "AI Applications",
-      copy: "LLM-powered products designed to be useful, not just impressive in a demo.",
+      title: "Production Backends",
+      copy: "Spring Boot, API integrations, scheduled ingestion jobs, and data models built for real operational use.",
       icon: Bot,
     },
     {
       title: "Automation",
-      copy: "Scraping and workflow systems that reduce manual effort and create structure.",
+      copy: "Workflow systems that scrape, score, summarize, and generate useful outputs with minimal manual effort.",
       icon: Wrench,
     },
     {
       title: "Data Products",
-      copy: "Interfaces that turn messy information into something you can search, inspect, and act on.",
+      copy: "Interfaces that turn messy information into searchable, inspectable, decision-ready tools.",
       icon: Database,
     },
     {
-      title: "Information Retrieval",
-      copy: "Systems that make notes, pages, and signals easier to query and reuse.",
+      title: "AI Systems",
+      copy: "RAG, multi-agent orchestration, prompt engineering, and LLM application design for practical workflows.",
       icon: ScanLine,
     },
   ];
@@ -53,8 +53,8 @@ function App() {
               <Section
                 id="about"
                 eyebrow="Focus"
-                title="Structured around applied AI, automation, and data products."
-                description="A horizontal view of the core areas behind the work."
+                title="Structured around full-stack engineering, backend systems, and applied AI."
+                description="A horizontal view of the technical areas behind the work."
                 className="mb-0"
               >
                 <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
@@ -87,7 +87,7 @@ function App() {
               id="projects"
               eyebrow="Projects"
               title="Featured projects"
-              description="The main focus of the portfolio. Each project is presented as a structured build with clear purpose, technologies, and available links."
+              description="Recent work across client websites, automation platforms, AI retrieval, scraping, and forecasting."
             >
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 {projects.map((project, index) => (
@@ -140,14 +140,24 @@ function App() {
               id="experience"
               eyebrow="Experience"
               title="Experience and achievements"
-              description="A structured timeline of leadership, teaching, and technical community work."
+              description="Production engineering experience, client-facing technical work, and student leadership."
             >
-              <div className="grid gap-8 lg:max-w-3xl">
+              <div className="grid gap-8 lg:max-w-4xl">
                 {experience.map((item, index) => (
                   <ExperienceCard key={item.title} item={item} index={index} />
                 ))}
               </div>
             </Section>
+            <div className="mt-14 grid gap-4 md:grid-cols-2">
+              {education.map((item) => (
+                <article key={item.school} className="rounded-[24px] border border-line bg-panel p-6">
+                  <p className="text-xs font-semibold uppercase tracking-[0.26em] text-accent">{item.period}</p>
+                  <h3 className="mt-3 text-lg font-semibold text-ink">{item.school}</h3>
+                  <p className="mt-3 text-sm leading-7 text-slate">{item.detail}</p>
+                  <p className="mt-2 text-sm leading-7 text-slate">{item.location}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
