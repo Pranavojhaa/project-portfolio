@@ -136,7 +136,7 @@ export const experience = [
   {
     title: "Software Engineering Intern",
     org: "MetLife, US Technology",
-    period: "2026",
+    period: "May – Jun 2026",
     detail:
       "Worked on Codenoesis, a Spring Boot engineering-metrics dashboard for Copilot usage, commits, sprint velocity, and story points.",
     bullets: [
@@ -145,6 +145,7 @@ export const experience = [
       "Integrated Azure DevOps APIs for program-increment date refinement and migrated commit ingestion to GitHub Enterprise APIs.",
       "Applied TypeScript, Java, Spring Boot, Playwright, Gen AI programming, and multi-agent orchestration in production.",
     ],
+    certificate: "/metlife-certificate.jpg",
   },
   {
     title: "Technical Head",

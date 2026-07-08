@@ -27,6 +27,17 @@ export function ExperienceCard({ item, index }) {
             ))}
           </ul>
         ) : null}
+        {item.certificate ? (
+          <a
+            href={item.certificate}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-accent transition hover:opacity-80"
+          >
+            View certificate
+            <span aria-hidden="true">↗</span>
+          </a>
+        ) : null}
       </div>
     </motion.article>
   );
