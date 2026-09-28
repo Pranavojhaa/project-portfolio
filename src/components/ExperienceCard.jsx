@@ -1,44 +1,36 @@
-import { motion } from "framer-motion";
+import { ExternalMark } from "./ExternalMark";
 
-export function ExperienceCard({ item, index }) {
+// One dated entry on the timeline: a role or a school.
+export function ExperienceCard({ item }) {
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.25 }}
-      transition={{ duration: 0.45, delay: index * 0.06 }}
-      className="relative pl-8"
-    >
-      <span className="absolute left-0 top-2 h-3 w-3 rounded-full bg-accent shadow-[0_0_20px_rgba(59,130,246,0.45)]" />
-      <span className="absolute left-[5px] top-6 h-[calc(100%-0.25rem)] w-px bg-line" />
-      <div className="rounded-[24px] border border-line bg-panel p-5">
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">{item.org}</p>
-          {item.period ? (
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate">{item.period}</p>
-          ) : null}
-        </div>
-        <h3 className="mt-3 text-lg font-semibold text-ink">{item.title}</h3>
-        <p className="mt-3 text-sm leading-7 text-slate">{item.detail}</p>
-        {item.bullets?.length ? (
-          <ul className="mt-4 grid gap-3 pl-5 text-sm leading-7 text-slate">
-            {item.bullets.map((bullet) => (
-              <li key={bullet}>{bullet}</li>
-            ))}
-          </ul>
+    <li className="timeline__entry">
+      <p className="timeline__period">{item.period.replace(/(\d)\s*[-–]\s*(\d)/, "$1–$2")}</p>
+      <article className="min-w-0">
+        <p className="timeline__kind">{item.kind}</p>
+        <h3 className="type-heading text-[1.3125rem] sm:text-[1.5rem]">{item.title}</h3>
+        <p className="mt-0.5 font-semibold text-ink">{item.org}</p>
+        <p className="mt-2 max-w-[62ch] text-muted">{item.detail}</p>
+        {item.id || item.certificate ? (
+          <div className="mt-2 flex flex-wrap gap-x-6">
+            {item.id ? (
+              <a href={`#stop-${item.id}`} className="text-link inline-flex min-h-11 items-center text-[0.9375rem]">
+                Read what I built there
+              </a>
+            ) : null}
+            {item.certificate ? (
+              <a
+                href={item.certificate}
+                target="_blank"
+                rel="noreferrer"
+                className="text-link inline-flex min-h-11 items-center gap-1 text-[0.9375rem]"
+              >
+                View certificate
+                <ExternalMark size={14} />
+              </a>
+            ) : null}
+          </div>
         ) : null}
-        {item.certificate ? (
-          <a
-            href={item.certificate}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-accent transition hover:opacity-80"
-          >
-            View certificate
-            <span aria-hidden="true">↗</span>
-          </a>
-        ) : null}
-      </div>
-    </motion.article>
+      </article>
+    </li>
   );
 }

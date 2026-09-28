@@ -2,29 +2,1950 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  color-scheme: dark;
+@layer base {
+  :root {
+    color-scheme: light dark;
+    --paper: 243 245 248;
+    --raised: 255 255 255;
+    --ink: 19 32 47;
+    --muted: 74 86 104;
+    --rule: 214 220 228;
+    --rule-strong: 125 136 152;
+    --signal: 42 85 201;
+    --signal-tint: 227 234 251;
+    --on-signal: 255 255 255;
+
+    /* Route-map lines: one colour per recurring skill. Each passes 4.5:1 on paper so it can also colour text. */
+    --line-typescript: 42 85 201;
+    --line-databases: 161 78 9;
+    --line-java: 122 94 0;
+    --line-pipelines: 106 71 201;
+    --line-llm: 183 47 114;
+    --line-python: 28 122 78;
+    --line-testing: 11 110 127;
+
+    /* The main-line train: dark enamel by day, brushed silver at night. */
+    --train-edge: 13 26 43;
+    --train-mid: 38 64 95;
+    --train-hi: 86 118 158;
+
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: 15 23 35;
+      --raised: 22 32 46;
+      --ink: 232 237 243;
+      --muted: 163 175 191;
+      --rule: 42 54 71;
+      --rule-strong: 110 124 144;
+      --signal: 127 162 255;
+      --signal-tint: 29 42 68;
+      --on-signal: 15 23 35;
+
+      --line-typescript: 127 162 255;
+      --line-databases: 242 162 92;
+      --line-java: 217 184 74;
+      --line-pipelines: 177 156 255;
+      --line-llm: 240 123 179;
+      --line-python: 91 201 148;
+      --line-testing: 95 207 223;
+
+      --train-edge: 96 110 128;
+      --train-mid: 178 190 205;
+      --train-hi: 240 244 249;
+    }
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 6.5rem;
+  }
+
+  @media (min-width: 768px) {
+    html {
+      scroll-padding-top: 5rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    background: rgb(var(--paper));
+    color: rgb(var(--ink));
+    font-family: "Overpass", ui-sans-serif, system-ui, sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    font-kerning: normal;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  ::selection {
+    background: rgb(var(--signal-tint));
+    color: rgb(var(--ink));
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--signal));
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
 
-html {
-  scroll-behavior: smooth;
+@layer components {
+  /* The name sits on one line, sized to its column: "Pranav Ojha" sets at about 5.4em in Overpass 800. */
+  .hero-copy {
+    container-type: inline-size;
+  }
+
+  .type-name {
+    font-size: clamp(2.5rem, 12vw, 7rem);
+    font-size: min(7rem, 17.5cqi);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 0.95;
+    white-space: nowrap;
+  }
+
+  .type-heading {
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  .type-section {
+    font-size: clamp(2rem, 4.5vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+
+  /* Small supporting text: sentence case, same family, numbers aligned. */
+  .type-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.45;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .type-contact {
+    font-size: clamp(1.5rem, 7vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+  }
+
+  /* Each word of the name rises out of its own mask; padding keeps descenders (the j) unclipped. */
+  .hero-word {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    padding: 0 0.03em 0.2em;
+    margin: 0 -0.03em -0.2em;
+  }
+
+  .hero-word > span {
+    display: inline-block;
+  }
+
+  .btn {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    padding: 0.625rem 1.125rem;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    line-height: 1.2;
+    transition:
+      background-color 150ms ease,
+      border-color 150ms ease,
+      color 150ms ease,
+      box-shadow 120ms ease,
+      transform 120ms ease;
+  }
+
+  /* Buttons sit proud of the page on a darker edge, and press down into it. */
+  .btn-primary {
+    background: rgb(var(--ink));
+    color: rgb(var(--paper));
+    box-shadow:
+      0 4px 0 color-mix(in srgb, rgb(var(--ink)) 55%, #000),
+      0 10px 16px -8px rgb(var(--ink) / 0.45);
+  }
+
+  .btn-primary:hover {
+    background: rgb(var(--signal));
+    color: rgb(var(--on-signal));
+    box-shadow:
+      0 4px 0 color-mix(in srgb, rgb(var(--signal)) 55%, #000),
+      0 10px 16px -8px rgb(var(--signal) / 0.5);
+  }
+
+  .btn-secondary {
+    border-color: rgb(var(--rule-strong));
+    background: rgb(var(--raised));
+    color: rgb(var(--ink));
+    box-shadow: 0 3px 0 rgb(var(--rule-strong));
+  }
+
+  .btn-secondary:hover {
+    border-color: rgb(var(--ink));
+    background: rgb(var(--raised));
+  }
+
+  .text-link {
+    color: rgb(var(--ink));
+    font-weight: 700;
+    text-decoration-line: underline;
+    text-decoration-color: rgb(var(--rule-strong));
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+    transition:
+      color 150ms ease,
+      text-decoration-color 150ms ease;
+  }
+
+  .text-link:hover {
+    color: rgb(var(--signal));
+    text-decoration-color: currentColor;
+    text-decoration-thickness: 2px;
+  }
+
+  /* Underline that draws from the left on hover; shown statically where motion is reduced. */
+  .draw-underline {
+    position: relative;
+  }
+
+  .draw-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: var(--u-bottom, 0.5rem);
+    height: 2px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 280ms var(--ease-out);
+  }
+
+  .draw-underline:hover::after {
+    transform: scaleX(1);
+  }
+
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -4rem;
+    z-index: 70;
+    border-radius: 6px;
+    background: rgb(var(--ink));
+    color: rgb(var(--paper));
+    padding: 0.75rem 1rem;
+    font-weight: 700;
+  }
+
+  .skip-link:focus {
+    top: 0.75rem;
+  }
+
+  /* A round enamel line badge, as on a transit sign. */
+  .line-bullet {
+    display: inline-grid;
+    width: 1.625rem;
+    height: 1.625rem;
+    flex: none;
+    place-items: center;
+    border-radius: 50%;
+    background: rgb(var(--c));
+    box-shadow:
+      inset 0 -2px 0 rgb(0 0 0 / 0.2),
+      inset 0 1px 0 rgb(255 255 255 / 0.25),
+      0 1px 2px rgb(var(--ink) / 0.25);
+    color: rgb(var(--paper));
+    font-size: 0.8125rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    padding-top: 0.1em;
+  }
+
+  /* ---------- Hero line bundle ---------- */
+
+  .line-bundle {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    filter: drop-shadow(4px 8px 6px rgb(var(--ink) / 0.18));
+    /* The lines keep going: they fade out as they head down towards the projects. */
+    -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent);
+    mask-image: linear-gradient(to bottom, #000 70%, transparent);
+  }
+
+  /* On narrow screens the bundle runs in from the screen edge, not the text column. */
+  .line-bundle--bleed {
+    width: calc(100% + 1rem);
+    margin-right: -1rem;
+  }
+
+  @media (min-width: 640px) {
+    .line-bundle--bleed {
+      width: calc(100% + 1.5rem);
+      margin-right: -1.5rem;
+    }
+  }
+
+  .line-bundle__line {
+    fill: none;
+    stroke: rgb(var(--c));
+    stroke-width: 7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1;
+  }
+
+  .line-bundle__side {
+    stroke: color-mix(in srgb, rgb(var(--c)) 55%, #000);
+  }
+
+  /* ---------- Station signs and wayfinding ---------- */
+
+  .stop__sign {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    margin: 1rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .stop__sign li {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    line-height: 1.35;
+    font-size: 0.9375rem;
+    font-weight: 700;
+  }
+
+  .stop__sign li > span:last-child {
+    padding-top: 0.2rem;
+  }
+
+  .stop__via {
+    color: rgb(var(--muted));
+    font-weight: 400;
+  }
+
+  .next-stop {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.75rem;
+    border: 1.5px solid rgb(var(--ink));
+    border-radius: 999px;
+    padding: 0.5rem 1.1rem 0.45rem;
+    color: rgb(var(--ink));
+    font-size: 0.9375rem;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 3px 0 rgb(var(--ink));
+    transition:
+      background-color 150ms ease,
+      color 150ms ease,
+      box-shadow 120ms ease,
+      transform 120ms ease;
+  }
+
+  .next-stop:hover {
+    background: rgb(var(--ink));
+    color: rgb(var(--paper));
+  }
+
+  .next-stop svg {
+    transition: transform 200ms var(--ease-out);
+  }
+
+  .route-svg-wrap {
+    position: relative;
+  }
+
+  /* The train that rides a chosen line on the map. */
+  .route-train {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 38px;
+    height: 16px;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    border-radius: 8px;
+    background: rgb(var(--c, var(--ink)));
+    box-shadow:
+      inset 0 -2px 0 rgb(0 0 0 / 0.22),
+      0 3px 6px rgb(var(--ink) / 0.3);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 200ms ease;
+  }
+
+  .route-train.is-on {
+    opacity: 1;
+  }
+
+  .route-train > span {
+    width: 6px;
+    height: 7px;
+    border-radius: 1.5px;
+    background: rgb(var(--paper));
+  }
+
+  /* ---------- The main line: one track down the whole page, and its train ---------- */
+
+  .mainline {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .mainline__track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: visible;
+    filter: drop-shadow(2px 3px 2px rgb(var(--ink) / 0.18));
+  }
+
+  .mainline__sleepers {
+    stroke: rgb(var(--rule-strong) / 0.6);
+    stroke-width: 12;
+    stroke-dasharray: 2 6;
+  }
+
+  .mainline__rails {
+    stroke: rgb(var(--ink));
+    stroke-width: 7;
+  }
+
+  .mainline__gauge {
+    stroke: rgb(var(--paper));
+    stroke-width: 3;
+  }
+
+  .mainline--wide .mainline__sleepers {
+    stroke-width: 22;
+    stroke-dasharray: 3 8;
+  }
+
+  .mainline--wide .mainline__rails {
+    stroke-width: 12;
+  }
+
+  .mainline--wide .mainline__gauge {
+    stroke-width: 7;
+  }
+
+  .mainline__spur {
+    stroke: rgb(var(--rule-strong));
+    stroke-width: 2;
+    stroke-dasharray: 2 4;
+  }
+
+  .mainline__station {
+    fill: rgb(var(--paper));
+    stroke: rgb(var(--ink));
+    stroke-width: 3;
+    transition:
+      fill 250ms ease,
+      stroke 250ms ease;
+  }
+
+  .mainline__station--interchange,
+  .mainline__station--terminus {
+    stroke-width: 4;
+  }
+
+  .mainline__station.is-passed {
+    fill: rgb(var(--ink));
+  }
+
+  .mainline__station.is-here {
+    fill: rgb(var(--signal));
+    stroke: rgb(var(--signal));
+  }
+
+  /* The train: a locomotive and one carriage per skill picked up. Slots are positioned; their contents are styled. */
+  .mainline__slot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    will-change: transform;
+  }
+
+  .mainline__loco,
+  .mainline__car {
+    position: relative;
+    display: grid;
+    width: 16px;
+    place-items: center;
+    box-shadow:
+      inset 0 -3px 0 rgb(0 0 0 / 0.25),
+      inset 0 2px 0 rgb(255 255 255 / 0.18),
+      5px 9px 12px rgb(0 0 0 / 0.3);
+  }
+
+  /* Rounded nose, windscreen and headlight face the direction of travel. */
+  .mainline__loco {
+    height: 36px;
+    border-radius: 8px 8px 11px 11px / 8px 8px 16px 16px;
+    background: linear-gradient(
+      90deg,
+      rgb(var(--train-edge)) 0%,
+      rgb(var(--train-mid)) 28%,
+      rgb(var(--train-hi)) 46%,
+      rgb(var(--train-mid)) 64%,
+      rgb(var(--train-edge)) 100%
+    );
+  }
+
+  .mainline__slot[data-heading="up"] .mainline__loco {
+    transform: rotate(180deg);
+  }
+
+  .mainline__loco::before {
+    content: "";
+    position: absolute;
+    left: 3px;
+    right: 3px;
+    bottom: 6px;
+    height: 7px;
+    border-radius: 2px;
+    background: linear-gradient(#d7ebff, #6f9fd8);
+  }
+
+  .mainline__loco::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    width: 34px;
+    height: 44px;
+    transform: translateX(-50%);
+    background: radial-gradient(ellipse at top, rgb(255 226 140 / 0.6), transparent 70%);
+  }
+
+  /* A carriage in its skill line's colour, shaded like a cylinder. */
+  .mainline__car {
+    height: 24px;
+    border-radius: 5px;
+    background:
+      linear-gradient(90deg, rgb(0 0 0 / 0.35), rgb(255 255 255 / 0.28) 45%, rgb(0 0 0 / 0.1) 60%, rgb(0 0 0 / 0.4)),
+      rgb(var(--c));
+    color: rgb(var(--paper));
+    font-size: 0.8125rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .mainline--wide .mainline__loco,
+  .mainline--wide .mainline__car {
+    width: 28px;
+  }
+
+  .mainline--wide .mainline__loco {
+    height: 62px;
+    border-radius: 14px 14px 16px 16px / 14px 14px 26px 26px;
+  }
+
+  .mainline--wide .mainline__loco::before {
+    left: 5px;
+    right: 5px;
+    bottom: 10px;
+    height: 11px;
+  }
+
+  .mainline--wide .mainline__car {
+    height: 38px;
+    border-radius: 7px;
+  }
+
+  /* A badge in flight from a station sign to the train. */
+  .line-bullet--flying {
+    position: fixed;
+    z-index: 80;
+    pointer-events: none;
+  }
+
+  /* ---------- Journey dock ---------- */
+
+  /* Hidden (and out of the tab order) until you leave the hero; slides up when it appears. */
+  .journey {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 45;
+    border-top: 1px solid rgb(var(--rule));
+    background: rgb(var(--paper) / 0.96);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 -12px 28px -20px rgb(var(--ink) / 0.4);
+    transform: translateY(110%);
+    visibility: hidden;
+    transition:
+      transform 320ms var(--ease-out),
+      visibility 0s linear 320ms;
+  }
+
+  .journey.is-visible {
+    transform: none;
+    visibility: visible;
+    transition-delay: 0s;
+  }
+
+  .journey__inner {
+    display: flex;
+    max-width: 72rem;
+    min-height: 3.5rem;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0 auto;
+    padding: 0.35rem 0.75rem;
+  }
+
+  @media (min-width: 640px) {
+    .journey__inner {
+      gap: 0.6rem;
+      padding: 0.35rem 1.5rem;
+    }
+  }
+
+  .journey__step,
+  .journey__where {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    gap: 0.35rem;
+    border: 1px solid rgb(var(--rule-strong));
+    border-radius: 999px;
+    background: rgb(var(--raised));
+    color: rgb(var(--ink));
+    font-size: 0.9375rem;
+    font-weight: 700;
+    transition:
+      background-color 150ms ease,
+      border-color 150ms ease;
+  }
+
+  .journey__step {
+    min-width: 2.75rem;
+    justify-content: center;
+    padding: 0 0.6rem;
+  }
+
+  .journey__step:hover:not(:disabled),
+  .journey__where:hover {
+    border-color: rgb(var(--ink));
+  }
+
+  .journey__step:disabled {
+    border-style: dashed;
+    color: rgb(var(--muted));
+    cursor: not-allowed;
+  }
+
+  .journey__step-text {
+    display: none;
+  }
+
+  @media (min-width: 640px) {
+    .journey__step {
+      padding: 0 0.9rem;
+    }
+
+    .journey__step-text {
+      display: inline;
+    }
+  }
+
+  .journey__where {
+    min-width: 0;
+    flex: 0 1 auto;
+    padding: 0 0.75rem;
+  }
+
+  .journey__chevron {
+    flex: none;
+    transition: transform 200ms var(--ease-out);
+  }
+
+  .journey__chevron.is-open {
+    transform: rotate(180deg);
+  }
+
+  .journey__status {
+    color: rgb(var(--muted));
+    font-size: 0.8125rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 379px) {
+    .journey__status {
+      display: none;
+    }
+  }
+
+  /* The list of every station, opening upwards from the dock. */
+  .journey__menu {
+    position: absolute;
+    bottom: calc(100% + 0.5rem);
+    left: 50%;
+    width: min(24rem, calc(100vw - 1.5rem));
+    max-height: min(62vh, 34rem);
+    overflow-y: auto;
+    border: 1px solid rgb(var(--rule));
+    border-radius: 16px;
+    background: rgb(var(--raised));
+    box-shadow: 0 24px 48px -24px rgb(var(--ink) / 0.5);
+    padding: 0.75rem;
+    transform: translateX(-50%);
+  }
+
+  .journey__menu ul {
+    margin: 0 0 0.5rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  .journey__menu-group {
+    margin: 0.35rem 0.5rem 0.25rem;
+    color: rgb(var(--muted));
+    font-size: 0.8125rem;
+    font-weight: 700;
+  }
+
+  .journey__menu-link {
+    display: flex;
+    min-height: 2.75rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    border-radius: 10px;
+    padding: 0 0.6rem;
+    color: rgb(var(--ink));
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .journey__menu-link:hover {
+    background: rgb(var(--paper));
+  }
+
+  .journey__menu-link[aria-current="location"] {
+    background: rgb(var(--ink));
+    color: rgb(var(--paper));
+  }
+
+  .journey__stamp {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .journey__skills {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 0.6rem;
+    margin-left: auto;
+  }
+
+  .journey__badges {
+    display: none;
+    gap: 0.25rem;
+  }
+
+  .journey__badges .line-bullet {
+    animation: none;
+  }
+
+  .journey__count {
+    font-size: 0.875rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .journey__count-words {
+    color: rgb(var(--muted));
+    font-weight: 600;
+  }
+
+  @media (max-width: 767px) {
+    .journey__count-words {
+      display: none;
+    }
+  }
+
+  @media (min-width: 1100px) {
+    .journey__badges {
+      display: flex;
+    }
+  }
+
+  /* Split-flap characters: dark tiles with a hinge line, as on a station departure board. */
+  .flap {
+    display: inline-flex;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .flap__cell,
+  .flap__gap {
+    display: inline-block;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    line-height: 1.55;
+  }
+
+  .flap__cell {
+    position: relative;
+    min-width: 0.72em;
+    margin-right: 1px;
+    border-radius: 3px;
+    background-color: rgb(var(--ink));
+    background-image: linear-gradient(transparent 0 50%, rgb(0 0 0 / 0.14) 50%);
+    box-shadow: inset 0 -1px 0 rgb(0 0 0 / 0.4);
+    color: rgb(var(--paper));
+    padding: 0 0.08em;
+    text-align: center;
+    transform-origin: 50% 0;
+  }
+
+  .flap__cell::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background: rgb(var(--paper) / 0.2);
+  }
+
+  .flap__gap {
+    width: 0.3em;
+  }
+
+  /* ---------- Arriving at a stop ---------- */
+
+  /* The platform edge under a stop's title lights up when the train docks there. */
+  .stop__title::after {
+    content: "";
+    display: block;
+    width: 4.5rem;
+    height: 5px;
+    margin-top: 0.55rem;
+    border-radius: 3px;
+    background: repeating-linear-gradient(90deg, rgb(var(--signal)) 0 12px, transparent 12px 16px);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 500ms var(--ease-out);
+  }
+
+  .stop.is-arrived .stop__title::after {
+    transform: scaleX(1);
+  }
+
+  /* ---------- The quick scan: a printed timetable card ---------- */
+
+  .timetable {
+    border: 2px solid rgb(var(--ink));
+    border-radius: 16px;
+    background: rgb(var(--raised));
+    padding: 1.5rem 1.1rem 0.75rem;
+    box-shadow: 0 6px 0 rgb(var(--ink));
+  }
+
+  @media (min-width: 640px) {
+    .timetable {
+      padding: 2rem 2rem 1rem;
+    }
+  }
+
+  .timetable__rows {
+    margin: 1.25rem 0 0;
+  }
+
+  .timetable__row {
+    display: grid;
+    gap: 0.3rem 1.5rem;
+    border-top: 1px solid rgb(var(--rule));
+    padding: 0.85rem 0;
+  }
+
+  @media (min-width: 640px) {
+    .timetable__row {
+      grid-template-columns: 9rem minmax(0, 1fr);
+    }
+  }
+
+  .timetable__row dt {
+    font-size: 0.9375rem;
+    font-weight: 800;
+  }
+
+  .timetable__row dd {
+    margin: 0;
+  }
+
+  .timetable__title {
+    color: rgb(var(--ink));
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: rgb(var(--rule-strong));
+    text-underline-offset: 0.2em;
+  }
+
+  .timetable__title:hover {
+    color: rgb(var(--signal));
+    text-decoration-color: currentColor;
+  }
+
+  .timetable__links {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+
+  .timetable__links--contact {
+    margin-left: 0;
+  }
+
+  .timetable__proof {
+    display: inline-flex;
+    min-height: 2rem;
+    align-items: center;
+    gap: 0.2rem;
+    border: 1px solid rgb(var(--rule-strong));
+    border-radius: 999px;
+    padding: 0 0.65rem;
+    color: rgb(var(--ink));
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: border-color 150ms ease;
+  }
+
+  .timetable__proof:hover {
+    border-color: rgb(var(--ink));
+  }
+
+  @media (max-width: 767px) {
+    .timetable__proof {
+      min-height: 2.75rem;
+    }
+
+    .timetable__links {
+      display: flex;
+      margin: 0.35rem 0 0;
+    }
+  }
+
+  .timetable__list {
+    display: grid;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .timetable__skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .timetable__skills li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-weight: 700;
+  }
+
+  .timetable__toolkit summary {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: rgb(var(--rule-strong));
+    text-underline-offset: 0.2em;
+  }
+
+  /* ---------- Carriages ---------- */
+
+  .train-cars {
+    display: grid;
+    gap: 3rem;
+    padding: 2rem 0 4rem;
+  }
+
+  .carriage {
+    position: relative;
+    border: 1px solid rgb(var(--rule));
+    border-top: 5px solid rgb(var(--ink));
+    border-radius: 24px 24px 14px 14px;
+    background: rgb(var(--raised));
+    padding: 1.75rem 1.1rem 2rem;
+    box-shadow:
+      0 7px 0 -1px color-mix(in srgb, rgb(var(--raised)) 80%, rgb(var(--ink))),
+      0 7px 0 0 rgb(var(--rule)),
+      0 36px 56px -40px rgb(var(--ink) / 0.5);
+  }
+
+  @media (min-width: 640px) {
+    .carriage {
+      padding: 2.5rem 2.5rem 3rem;
+    }
+  }
+
+  /* The coupling between one car and the next. */
+  .carriage-wrap + .carriage-wrap .carriage::before {
+    content: "";
+    position: absolute;
+    bottom: calc(100% + 5px);
+    left: 50%;
+    width: 2.75rem;
+    height: calc(3rem - 5px);
+    transform: translateX(-50%);
+    background:
+      radial-gradient(circle at 50% 0, rgb(var(--ink)) 0 5px, transparent 5.5px),
+      radial-gradient(circle at 50% 100%, rgb(var(--ink)) 0 5px, transparent 5.5px),
+      linear-gradient(90deg, transparent 44%, rgb(var(--ink)) 44% 56%, transparent 56%);
+  }
+
+  .carriage__plate {
+    display: inline-flex;
+    margin: 0 0 0.9rem;
+    border-radius: 6px;
+    background: rgb(var(--ink));
+    color: rgb(var(--paper));
+    padding: 0.15rem 0.6rem;
+    font-size: 0.8125rem;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .skill-lines {
+    display: grid;
+    gap: 0 2.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  @media (min-width: 768px) {
+    .skill-lines {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .skill-line {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    border-top: 1px solid rgb(var(--rule));
+    padding: 0.9rem 0;
+  }
+
+  .skill-line.is-on-board .line-bullet {
+    outline: 2px solid rgb(var(--c, var(--ink)));
+    outline-offset: 2px;
+  }
+
+  .skill-line__name {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 800;
+  }
+
+  .skill-line__tag {
+    border: 1px solid rgb(var(--signal));
+    border-radius: 999px;
+    padding: 0 0.5rem;
+    color: rgb(var(--signal));
+    font-size: 0.8125rem;
+    font-weight: 700;
+  }
+
+  .skill-line__stops {
+    margin: 0.25rem 0 0;
+  }
+
+  .skill-line__stops a {
+    color: rgb(var(--ink));
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: rgb(var(--rule-strong));
+    text-underline-offset: 0.2em;
+  }
+
+  /* Car 2: one dated line, a dot per entry. */
+  .timeline {
+    margin: 0 0 0 0.45rem;
+    padding: 0;
+    border-left: 3px solid rgb(var(--ink));
+    list-style: none;
+  }
+
+  .timeline__entry {
+    position: relative;
+    display: grid;
+    gap: 0.2rem 1.5rem;
+    padding: 0 0 2rem 1.4rem;
+  }
+
+  .timeline__entry:last-child {
+    padding-bottom: 0.25rem;
+  }
+
+  .timeline__entry::before {
+    content: "";
+    position: absolute;
+    top: 0.3rem;
+    left: calc(-0.5rem - 1.5px);
+    width: 1rem;
+    height: 1rem;
+    border: 3px solid rgb(var(--ink));
+    border-radius: 50%;
+    background: rgb(var(--raised));
+  }
+
+  @media (min-width: 640px) {
+    .timeline__entry {
+      grid-template-columns: 8.5rem minmax(0, 1fr);
+    }
+  }
+
+  .timeline__period {
+    margin: 0;
+    padding-top: 0.2rem;
+    color: rgb(var(--muted));
+    font-size: 0.9375rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .timeline__kind {
+    margin: 0;
+    color: rgb(var(--muted));
+    font-size: 0.8125rem;
+    font-weight: 700;
+  }
+
+  /* Car 3: what each stop claims, and how to check it. */
+  .ledger {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ledger__row {
+    display: grid;
+    gap: 0.4rem 2rem;
+    border-top: 1px solid rgb(var(--rule));
+    padding: 1.1rem 0;
+  }
+
+  @media (min-width: 1024px) {
+    .ledger__row {
+      grid-template-columns: 13rem minmax(0, 1fr) 20rem;
+      align-items: start;
+    }
+  }
+
+  .ledger__title {
+    margin: 0;
+    font-size: 1.0625rem;
+    font-weight: 800;
+    line-height: 1.3;
+  }
+
+  .ledger__title a {
+    color: rgb(var(--ink));
+    text-decoration: underline;
+    text-decoration-color: rgb(var(--rule-strong));
+    text-underline-offset: 0.2em;
+  }
+
+  /* On touch screens, title links get a full-size tap area without changing the layout around them. */
+  @media (max-width: 767px) {
+    .timetable__title,
+    .ledger__title a,
+    .recap__proof a {
+      display: inline-block;
+      margin-block: -0.7rem;
+      padding-block: 0.7rem;
+    }
+  }
+
+  .ledger__claim {
+    margin: 0;
+    color: rgb(var(--muted));
+  }
+
+  .ledger__evidence {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ledger__evidence li {
+    display: grid;
+    grid-template-columns: 6rem minmax(0, 1fr);
+    align-items: center;
+    column-gap: 0.6rem;
+  }
+
+  .ledger__kind {
+    justify-self: start;
+    min-width: 5.75rem;
+    border-radius: 5px;
+    padding: 0.1rem 0.45rem;
+    color: rgb(var(--ink));
+    font-size: 0.8125rem;
+    font-weight: 800;
+    text-align: center;
+  }
+
+  .ledger__kind--live {
+    background: rgb(var(--line-python) / 0.16);
+  }
+
+  .ledger__kind--code {
+    background: rgb(var(--line-typescript) / 0.14);
+  }
+
+  .ledger__kind--document {
+    background: rgb(var(--line-databases) / 0.16);
+  }
+
+  .ledger__kind--request {
+    background: rgb(var(--paper));
+    box-shadow: inset 0 0 0 1px rgb(var(--rule-strong));
+  }
+
+  /* ---------- Recap: the whole case on one screen ---------- */
+
+  .recap {
+    display: flex;
+    min-height: calc(100svh - 3.5rem);
+    align-items: center;
+    border-top: 1px solid rgb(var(--rule));
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .recap > div {
+    width: 100%;
+  }
+
+  .recap__intro {
+    max-width: 58ch;
+    margin: 0.6rem 0 0;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  @media (min-width: 640px) {
+    .recap__intro {
+      font-size: 1.25rem;
+    }
+  }
+
+  .recap__proof {
+    display: grid;
+    gap: 0;
+    max-width: 72ch;
+    margin: 1rem 0 0;
+    padding-left: 1.1rem;
+    list-style: disc;
+  }
+
+  .recap__proof li::marker {
+    color: rgb(var(--signal));
+  }
+
+  .recap__now {
+    margin: 0.5rem 0 0;
+    font-weight: 700;
+  }
+
+  .recap__skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.9rem;
+    margin: 0.85rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .recap__skills li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+
+  .recap__progress {
+    margin: 0.5rem 0 0;
+    color: rgb(var(--muted));
+    font-size: 0.9375rem;
+  }
+
+  .recap__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1rem;
+  }
+
+  .recap__direct {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+    margin: 0.9rem 0 0;
+    font-size: 0.9375rem;
+  }
+
+  .recap__direct a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+  }
+
+  /* On a phone the skills read as one line of names, so the recap still fits a single screen. */
+  @media (max-width: 639px) {
+    .recap__skills {
+      display: block;
+      font-size: 0.9375rem;
+    }
+
+    .recap__skills li {
+      display: inline;
+      font-size: inherit;
+    }
+
+    .recap__skills .line-bullet {
+      display: none;
+    }
+
+    .recap__skills li:not(:last-child)::after {
+      content: ", ";
+    }
+  }
+
+  /* ---------- Route overview: line toggles, and on wide screens the strip map ---------- */
+
+  .route-overview {
+    --lane: 2.25rem;
+    --labels: 3.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .route-lines {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .route-line-toggle {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    gap: 0.6rem;
+    border: 1px solid rgb(var(--rule));
+    border-radius: 6px;
+    background: rgb(var(--raised));
+    padding: 0.35rem 0.8rem;
+    color: rgb(var(--ink));
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: left;
+    box-shadow: 0 2px 0 rgb(var(--rule));
+    transition:
+      border-color 150ms ease,
+      background-color 150ms ease;
+  }
+
+  .route-line-toggle:hover {
+    border-color: rgb(var(--c));
+  }
+
+  .route-line-toggle[aria-pressed="true"] {
+    border-color: rgb(var(--c));
+    box-shadow: inset 0 0 0 1px rgb(var(--c));
+  }
+
+  .route-line-toggle__count {
+    margin-left: auto;
+    padding-left: 0.5rem;
+    white-space: nowrap;
+    color: rgb(var(--muted));
+    font-size: 0.8125rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .route-diagram {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    .route-overview {
+      display: grid;
+      grid-template-columns: 17rem minmax(0, 1fr);
+      column-gap: 1.25rem;
+    }
+
+    .route-lines {
+      flex-direction: column;
+      flex-wrap: nowrap;
+      gap: 0;
+      padding-top: var(--labels);
+    }
+
+    .route-line-toggle {
+      width: 100%;
+      min-height: var(--lane);
+      border-color: transparent;
+      background: transparent;
+      box-shadow: none;
+      padding: 0 0.6rem;
+      font-size: 0.875rem;
+      white-space: nowrap;
+    }
+
+    .route-diagram {
+      display: block;
+    }
+
+    .route-overview {
+      border: 1px solid rgb(var(--rule));
+      border-radius: 18px;
+      background: rgb(var(--raised));
+      padding: 1.5rem 2rem 2rem 1.25rem;
+      box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.05),
+        0 7px 0 -1px color-mix(in srgb, rgb(var(--raised)) 80%, rgb(var(--ink))),
+        0 7px 0 0 rgb(var(--rule)),
+        0 40px 60px -36px rgb(var(--ink) / 0.55);
+    }
+  }
+
+  .route-stop-labels {
+    display: grid;
+    grid-template-columns: repeat(var(--stops), minmax(0, 1fr));
+    height: var(--labels);
+    align-items: end;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .route-stop-labels a {
+    display: block;
+    padding: 0 0.25rem 0.6rem;
+    color: rgb(var(--ink));
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    transition: color 200ms ease;
+  }
+
+  .route-stop-labels a:hover {
+    color: rgb(var(--signal));
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .route-stop-labels a.is-off {
+    color: rgb(var(--muted));
+    font-weight: 500;
+  }
+
+  .route-svg {
+    display: block;
+    width: 100%;
+    overflow: visible;
+    filter: drop-shadow(0 2px 1.5px rgb(var(--ink) / 0.2));
+  }
+
+  .route-guide {
+    stroke: rgb(var(--rule));
+    stroke-width: 1;
+  }
+
+  .route-track {
+    fill: rgb(var(--c));
+    transform-box: fill-box;
+    transform-origin: 0 50%;
+  }
+
+  .route-dot {
+    fill: rgb(var(--raised));
+    stroke: rgb(var(--c));
+    stroke-width: 3.5;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .route-track,
+  .route-dot,
+  .rail,
+  .rail-dot {
+    transition: opacity 200ms ease;
+  }
+
+  .is-dim {
+    opacity: 0.14;
+  }
+
+  /* ---------- The route itself: every stop's story, always visible ---------- */
+
+  .route {
+    --gap: 8px;
+    --bar: 3px;
+    --dot: 9px;
+    --title: 1.625rem;
+    --dot-y: calc(var(--title) * 0.6);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  @media (min-width: 768px) {
+    .route {
+      --gap: 12px;
+      --bar: 4px;
+      --dot: 12px;
+      --title: 2.125rem;
+    }
+  }
+
+  .stop {
+    display: grid;
+    grid-template-columns: calc(var(--gap) * var(--lanes)) minmax(0, 1fr);
+    column-gap: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .stop {
+      column-gap: 2.25rem;
+    }
+  }
+
+  .stop__rails {
+    position: relative;
+  }
+
+  .rail {
+    position: absolute;
+    left: calc(var(--lane-i) * var(--gap) + (var(--gap) - var(--bar)) / 2);
+    width: var(--bar);
+    border-radius: var(--bar);
+    background: rgb(var(--c));
+  }
+
+  .rail-dot {
+    position: absolute;
+    top: calc(var(--dot-y) - var(--dot) / 2);
+    left: calc(var(--lane-i) * var(--gap) + (var(--gap) - var(--dot)) / 2);
+    width: var(--dot);
+    height: var(--dot);
+    border: 2.5px solid rgb(var(--c));
+    border-radius: 50%;
+    background: rgb(var(--paper));
+  }
+
+  .stop__body {
+    min-width: 0;
+    padding-bottom: 4rem;
+  }
+
+  @media (min-width: 768px) {
+    .stop__body {
+      padding-bottom: 5.5rem;
+    }
+  }
+
+  .stop:last-child .stop__body {
+    padding-bottom: 0;
+  }
+
+  .stop__title {
+    margin: 0;
+    font-size: var(--title);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  .stop__hook {
+    max-width: 42ch;
+    margin-top: 1.25rem;
+    font-size: clamp(1.1875rem, 2vw, 1.375rem);
+    font-weight: 600;
+    line-height: 1.4;
+    text-wrap: pretty;
+  }
+
+  .stop__facts {
+    display: grid;
+    gap: 1.25rem;
+    margin: 1.75rem 0 0;
+  }
+
+  @media (min-width: 1024px) {
+    .stop__facts {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 2rem;
+    }
+  }
+
+  .stop__facts dt {
+    font-size: 0.9375rem;
+    font-weight: 800;
+  }
+
+  .stop__facts dd {
+    margin: 0.3rem 0 0;
+    color: rgb(var(--muted));
+  }
+
+  /* ---------- Nova's roadmap ---------- */
+
+  .roadmap {
+    margin-top: 1.75rem;
+    max-width: 44rem;
+  }
+
+  .roadmap__steps {
+    display: grid;
+    gap: 0.9rem;
+    margin: 0.9rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .roadmap__step {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: rgb(var(--muted));
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .roadmap__node {
+    position: relative;
+    display: grid;
+    width: 2rem;
+    height: 2rem;
+    flex: none;
+    place-items: center;
+    border: 1.5px dashed rgb(var(--rule-strong));
+    border-radius: 50%;
+    background: rgb(var(--paper));
+    font-size: 0.8125rem;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .roadmap__step.is-current {
+    color: rgb(var(--ink));
+    font-weight: 800;
+  }
+
+  .roadmap__step.is-current .roadmap__node {
+    border: 0;
+    background: rgb(var(--ink));
+    color: rgb(var(--paper));
+  }
+
+  @media (min-width: 640px) {
+    .roadmap__steps {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0;
+    }
+
+    .roadmap__step {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.6rem;
+      padding-right: 0.75rem;
+    }
+
+    /* The track between stages: solid behind the current stage, dashed where Nova hasn't reached yet. */
+    .roadmap__step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 1rem;
+      left: 2.5rem;
+      right: 0.5rem;
+      border-top: 1.5px dashed rgb(var(--rule-strong));
+    }
+  }
 }
 
-body {
-  margin: 0;
-  min-width: 320px;
-  background:
-    radial-gradient(circle at 12% 12%, rgba(59, 130, 246, 0.14), transparent 20%),
-    radial-gradient(circle at 82% 16%, rgba(139, 92, 246, 0.12), transparent 18%),
-    linear-gradient(180deg, #0b0f14 0%, #0d121a 46%, #0b0f14 100%);
-  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+/*
+ * Motion. Everything below opts in to motion, so reduced-motion visitors get the finished, static page.
+ * The hero name uses CSS keyframes on first paint. The map draw waits for `.reveal-ready`, which the inline
+ * script in index.html adds only when IntersectionObserver exists and motion is allowed, so nothing is ever
+ * hidden when scripts fail. Stories never animate in: they are readable from the first paint.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-word > span {
+    animation: rise 700ms var(--ease-out) both;
+    animation-delay: calc(var(--i, 0) * 90ms);
+  }
+
+  .reveal-ready .route-diagram .route-track {
+    transition:
+      transform 480ms var(--ease-out),
+      opacity 200ms ease;
+    transition-delay: calc(var(--i, 0) * 70ms), 0ms;
+  }
+
+  .reveal-ready .route-diagram .route-dot {
+    transition:
+      transform 240ms var(--ease-out),
+      opacity 200ms ease;
+    transition-delay: var(--d, 0ms), 0ms;
+  }
+
+  .reveal-ready .route-diagram:not([data-revealed]) .route-track {
+    transform: scaleX(0);
+  }
+
+  .reveal-ready .route-diagram:not([data-revealed]) .route-dot {
+    transform: scale(0);
+  }
+
+  .line-bundle__line {
+    animation: bundle-draw 1100ms var(--ease-out) both;
+    animation-delay: calc(200ms + var(--i, 0) * 70ms);
+  }
+
+  .next-stop:hover svg {
+    transform: translateY(3px);
+  }
+
+  .btn:active,
+  .next-stop:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 rgb(var(--ink) / 0.6);
+  }
+
+  @media (min-width: 1024px) {
+    .route-overview {
+      transform: perspective(1600px) rotateX(calc(var(--tilt, 0deg) + var(--rx, 0deg))) rotateY(var(--ry, 0deg));
+      transform-origin: 50% 100%;
+      transition: transform 160ms ease-out;
+    }
+  }
+
+  .tilt-stage {
+    transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transition: transform 200ms ease-out;
+  }
+
+  /* On arrival the station sign's badges pop in turn, and the rails ring. */
+  .stop.is-arrived .stop__sign .line-bullet {
+    animation: badge-pop 650ms var(--ease-out) 1 both;
+    animation-delay: calc(150ms + var(--n, 0) * 150ms);
+  }
+
+  .stop.is-arrived .rail-dot::after {
+    content: "";
+    position: absolute;
+    inset: -2.5px;
+    border: 2px solid rgb(var(--c));
+    border-radius: 50%;
+    animation: ring 800ms var(--ease-out) 1 both;
+  }
+
+  .flap__cell {
+    animation: flap 380ms var(--ease-out) both;
+    animation-delay: calc(var(--i, 0) * 28ms);
+  }
+
+  .mainline__car {
+    animation: couple 420ms var(--ease-out) both;
+  }
+
+  /* Arriving at a stop from the map: its dots ring once to say "you are here". */
+  .stop:target .rail-dot::after {
+    content: "";
+    position: absolute;
+    inset: -2.5px;
+    border: 2px solid rgb(var(--c));
+    border-radius: 50%;
+    animation: ring 700ms var(--ease-out) 350ms 1 both;
+  }
+
+  .roadmap__step.is-current .roadmap__node::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border: 2px solid rgb(var(--ink));
+    border-radius: 50%;
+    animation: ring 1600ms ease-out 600ms 3 both;
+  }
 }
 
-* {
-  box-sizing: border-box;
+@media (prefers-reduced-motion: reduce) {
+  .mainline__train {
+    display: none;
+  }
+
+  .draw-underline::after {
+    display: none;
+  }
+
+  .draw-underline:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
 }
 
-::selection {
-  background: rgba(59, 130, 246, 0.26);
-  color: #e5e7eb;
+@keyframes rise {
+  from {
+    transform: translate3d(0, 105%, 0);
+  }
+}
+
+@keyframes bundle-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+
+@keyframes badge-pop {
+  0%,
+  100% {
+    transform: none;
+  }
+  40% {
+    transform: translateY(-4px) scale(1.3);
+  }
+}
+
+@keyframes flap {
+  from {
+    transform: perspective(180px) rotateX(-95deg);
+    filter: brightness(1.6);
+  }
+}
+
+@keyframes couple {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes ring {
+  0% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.7);
+  }
+}
+
+/* Between 1024px and 1360px the page is narrow enough that the main line needs its own gutter on the left. */
+@media (min-width: 1024px) and (max-width: 1359px) {
+  main.trunk-gutter {
+    padding-left: 4rem;
+  }
+
+  .trunk-gutter:not(main) {
+    padding-left: 5.5rem;
+  }
+}
+
+footer {
+  padding-bottom: 5rem;
 }

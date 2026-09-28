@@ -1,27 +1,15 @@
-import { motion } from "framer-motion";
+export function Section({ id, title, intro, children, className = "" }) {
+  const headingId = `${id}-title`;
 
-export function Section({ id, eyebrow, title, description, children, className = "" }) {
   return (
-    <motion.section
-      id={id}
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.18 }}
-      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-      className={`relative scroll-mt-24 ${className}`}
-    >
-      <div className="mb-10 max-w-3xl">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.32em] text-accent">
-          {eyebrow}
-        </p>
-        <h2 className="font-display text-3xl font-semibold tracking-[-0.05em] text-ink sm:text-4xl md:text-5xl">
+    <section id={id} aria-labelledby={headingId} className={`px-4 py-16 sm:px-6 sm:py-24 ${className}`}>
+      <div className="mx-auto max-w-page">
+        <h2 id={headingId} className="type-section max-w-[24ch]">
           {title}
         </h2>
-        {description ? (
-          <p className="mt-4 max-w-2xl text-sm leading-7 text-slate sm:text-base">{description}</p>
-        ) : null}
+        {intro ? <p className="mt-4 max-w-[62ch] text-[1.125rem] text-muted">{intro}</p> : null}
+        <div className="mt-10 sm:mt-12">{children}</div>
       </div>
-      {children}
-    </motion.section>
+    </section>
   );
 }

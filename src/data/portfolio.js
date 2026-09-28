@@ -1,8 +1,9 @@
 export const navItems = [
-  { label: "About", href: "#about" },
+  { label: "At a glance", href: "#glance" },
   { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
-  { label: "Experience", href: "#experience" },
+  { label: "Timeline", href: "#experience" },
+  { label: "Proof", href: "#proof" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -10,10 +11,10 @@ export const hero = {
   name: "Pranav Ojha",
   tagline: "Building production-ready web, backend, and AI/data systems end to end.",
   intro:
-    "Data Science and Computer Science undergraduate at Krea University with hands-on experience shipping a production Spring Boot engineering dashboard, full-stack Next.js client platforms, and multi-agent automation pipelines.",
+    "Data Science and Computer Science undergraduate at Krea University with hands-on experience shipping a production Spring Boot engineering dashboard, a Next.js client website, and multi-agent automation pipelines.",
   github: "https://github.com/Pranavojhaa",
-  email: "pranavojha456@gmail.com",
-  phone: "+919717360003",
+  email: "Pranav.ojha2006@gmail.com",
+  phone: "+919217179182",
   location: "Greater Noida, India",
   website: "https://pranavojha.com/",
   resume: "/Pranav_Ojha_Resume_2026.docx",
@@ -51,39 +52,49 @@ export const skills = [
 
 export const projects = [
   {
+    id: "nova",
     title: "Nova",
+    shortTitle: "Nova",
     summary:
-      "A persistent personal delegation agent with exactly-once actions, bounded authorization, Postgres, and 58 tests; staging and production environments are in progress.",
-    problem:
-      "Delegated actions need to stay replay-safe and within the authority granted for each task.",
-    solution:
-      "A TypeScript action engine uses Postgres-backed execution records, bounded authorization, and exactly-once handling for external effects.",
-    outcome:
-      "The working core has 58 tests; staging and production environments are in progress.",
+      "Nova is a persistent personal delegate: tell it what you want taken care of, and its vision is to carry the task through, verify the outcome, and report back.",
+    vision:
+      "Nova is a persistent personal delegate: you describe an outcome in plain language, and Nova takes responsibility for seeing it through. It should plan the work, act only through capabilities you have authorised, wait for the world to respond, verify what happened, and tell you when it is done. Imagine asking it to coordinate a meeting with Rahul and getting a confirmed update back—not a list of instructions to follow yourself. The ambition is simple: make real work as easy to delegate as sending a message, without giving up the control needed to trust the result.",
     stack: ["TypeScript", "Postgres", "Exactly-Once Actions", "Bounded Authorization", "Vitest"],
+    // Stack entries that describe how Nova is designed rather than a shipped feature.
+    designConstraints: ["Exactly-Once Actions", "Bounded Authorization"],
     github: "https://github.com/Pranavojhaa/Nova",
     demo: "",
     highlight: "Featured product",
     featured: true,
+    roadmap: {
+      currentStage: 0,
+      stages: ["In development", "Production", "Ready to use", "Landing page"],
+    },
   },
   {
+    id: "trout-house",
     title: "The Himalayan Trout House",
+    shortTitle: "Trout House",
+    hook: "A website for a real client. When the owners need a change, they text me and I hard-code it.",
     summary:
-      "A full-stack client website built with Next.js, Payload CMS, Supabase, Cloudinary, Resend, Google Places reviews, and Vercel deployment.",
+      "A client website built with Next.js and deployed on Vercel, with Cloudinary images, Resend enquiry emails, and Google Places reviews. The owners text me changes and I hard-code them.",
     problem:
-      "The client needed a polished web presence that could stay maintainable after handoff, with content editing, optimized media, enquiry flow, and trustworthy social proof.",
+      "The client needed a polished web presence with optimized media, an enquiry flow, and trustworthy social proof.",
     solution:
-      "Built a Next.js React 19 site backed by a headless Payload CMS on PostgreSQL/Supabase, Cloudinary image optimization, Resend enquiry emails, and Google Places review integration.",
+      "Built a Next.js React 19 site with Cloudinary image optimization, Resend enquiry emails, and Google Places review integration, deployed on Vercel. When the owners need a change, they text me and I hard-code it.",
     outcome:
-      "Delivered a production client platform that combines a modern frontend with self-service CMS workflows and deployment-ready infrastructure.",
-    stack: ["Next.js", "TypeScript", "Payload CMS", "Supabase", "Cloudinary", "Resend", "Vercel"],
+      "Delivered a production client website that I keep up to date by hand as the owners' needs change.",
+    stack: ["Next.js", "TypeScript", "Cloudinary", "Resend", "Vercel"],
     github: "",
-    demo: "mailto:pranavojha456@gmail.com?subject=The%20Himalayan%20Trout%20House%20Project",
+    demo: "mailto:Pranav.ojha2006@gmail.com?subject=The%20Himalayan%20Trout%20House%20Project",
     highlight: "Client website",
     featured: true,
   },
   {
+    id: "job-search",
     title: "Automated Job-Search & Application Platform",
+    shortTitle: "Job search",
+    hook: "Comparing job posts by hand is slow and inconsistent. This 51-node pipeline reads, ranks, and drafts the applications.",
     summary:
       "A private 51-node n8n automation that scrapes senior-role postings, scores opportunities with Claude agents, and generates tailored application materials.",
     problem:
@@ -94,12 +105,15 @@ export const projects = [
       "Converted a time-intensive search process into a ranked daily report with customized PDF application materials generated automatically.",
     stack: ["n8n", "Claude API", "Apify", "Supabase", "LaTeX", "Automation"],
     github: "",
-    demo: "mailto:pranavojha456@gmail.com?subject=Automated%20Job%20Search%20Platform",
+    demo: "mailto:Pranav.ojha2006@gmail.com?subject=Automated%20Job%20Search%20Platform",
     highlight: "Multi-agent automation",
     featured: true,
   },
   {
+    id: "second-brain",
     title: "AI Second Brain",
+    shortTitle: "Second Brain",
+    hook: "Notes get less useful as they pile up. This lets you ask an Obsidian vault questions in plain language.",
     summary:
       "A natural-language assistant for querying Obsidian notes with retrieval-augmented generation over custom markdown parsing and vector retrieval.",
     problem:
@@ -110,12 +124,15 @@ export const projects = [
       "Turned a note vault into a conversational knowledge interface, showing practical LLM application design beyond a simple chat wrapper.",
     stack: ["Python", "OpenAI API", "RAG", "Vector Retrieval", "Markdown Parsing"],
     github: "https://github.com/Pranavojhaa/Second_Brain",
-    demo: "mailto:pranavojha456@gmail.com?subject=AI%20Second%20Brain%20Demo",
+    demo: "mailto:Pranav.ojha2006@gmail.com?subject=AI%20Second%20Brain%20Demo",
     highlight: "Knowledge retrieval",
     featured: true,
   },
   {
+    id: "webscrapeai",
     title: "WebscrapeAI",
+    shortTitle: "WebscrapeAI",
+    hook: "Web pages rarely agree on structure. This pipeline pulls the data out and gives it a shape you can reuse.",
     summary:
       "An intelligent web scraping pipeline that extracts structured web data and uses LangChain workflows to clean, summarize, and structure results.",
     problem:
@@ -131,7 +148,10 @@ export const projects = [
     featured: false,
   },
   {
+    id: "smart-stock",
     title: "Smart Stock",
+    shortTitle: "Smart Stock",
+    hook: "A forecast isn’t a decision. Smart Stock turns 7‑day and 28‑day demand forecasts into reorder logic.",
     summary:
       "A Streamlit demand-forecasting tool that predicts 7-day and 28-day retail demand and turns forecasts into reorder logic.",
     problem:
@@ -150,6 +170,9 @@ export const projects = [
 
 export const experience = [
   {
+    id: "metlife",
+    shortTitle: "MetLife",
+    hook: "I rebuilt the backend behind an engineering-metrics dashboard, and it now runs in production.",
     title: "Software Engineering Intern",
     org: "MetLife, US Technology",
     period: "May – Jun 2026",
@@ -180,7 +203,7 @@ export const experience = [
   {
     title: "Founder",
     org: "Krea Data Science Club",
-    period: "2025-Present",
+    period: "2025-2026",
     detail:
       "Founded and lead the club, organizing technical talks, workshops, and events on data science and machine learning.",
   },
@@ -197,7 +220,7 @@ export const education = [
   {
     school: "Krea University",
     detail: "B.Sc., Data Science and Computer Science",
-    period: "2024-2028",
+    period: "2024-2026",
     location: "Sri City, Andhra Pradesh",
   },
   {
@@ -221,17 +244,75 @@ export const contactCards = [
   },
   {
     label: "Email",
-    value: "pranavojha456@gmail.com",
-    href: "mailto:pranavojha456@gmail.com",
+    value: "Pranav.ojha2006@gmail.com",
+    href: "mailto:Pranav.ojha2006@gmail.com",
   },
   {
     label: "Phone",
-    value: "+91 9717360003",
-    href: "tel:+919717360003",
+    value: "+91 9217179182",
+    href: "tel:+919217179182",
   },
   {
     label: "Resume",
     value: "Download 2026 DOCX",
     href: "/Pranav_Ojha_Resume_2026.docx",
+  },
+];
+
+// The Projects route map. Stops run in this order; each line is a skill that recurs across stops.
+// `stops` maps a stop id to the evidence for that skill there (empty when the line name says it all).
+export const routeStops = ["nova", "metlife", "trout-house", "job-search", "second-brain", "webscrapeai", "smart-stock"];
+
+export const skillLines = [
+  {
+    id: "typescript",
+    code: "TS",
+    name: "TypeScript",
+    stops: { nova: "", metlife: "", "trout-house": "Next.js" },
+  },
+  {
+    id: "databases",
+    code: "DB",
+    name: "Databases",
+    stops: { nova: "Postgres", metlife: "Azure Cosmos DB", "job-search": "Supabase" },
+  },
+  {
+    id: "java",
+    code: "JV",
+    name: "Java and Spring Boot",
+    stops: { metlife: "" },
+  },
+  {
+    id: "pipelines",
+    code: "PL",
+    name: "Pipelines and automation",
+    stops: {
+      metlife: "Excel streaming job and schedulers",
+      "job-search": "n8n and Apify",
+      webscrapeai: "BeautifulSoup scraping",
+    },
+  },
+  {
+    id: "llm",
+    code: "AI",
+    name: "LLMs and agents",
+    stops: {
+      metlife: "Gen AI programming and multi-agent orchestration",
+      "job-search": "Claude API agents",
+      "second-brain": "OpenAI API and RAG",
+      webscrapeai: "LangChain",
+    },
+  },
+  {
+    id: "python",
+    code: "PY",
+    name: "Python",
+    stops: { "second-brain": "", webscrapeai: "", "smart-stock": "Streamlit" },
+  },
+  {
+    id: "testing",
+    code: "QA",
+    name: "Testing",
+    stops: { nova: "Vitest", metlife: "Playwright", "smart-stock": "" },
   },
 ];

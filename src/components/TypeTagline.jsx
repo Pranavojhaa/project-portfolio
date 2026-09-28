@@ -21,7 +21,7 @@ export function TypeTagline({ text }) {
   return (
     <span>
       {visibleText}
-      <span className="ml-1 inline-block h-[1.1em] w-[0.08em] animate-pulse bg-accentSoft align-middle" />
+      <span className="ml-1 inline-block h-[1.1em] w-[0.08em] animate-pulse bg-signal align-middle" />
     </span>
   );
 }

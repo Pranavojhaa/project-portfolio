@@ -8,7 +8,8 @@
       content="Pranav Ojha is a Data Science and Computer Science undergraduate at Krea University building production software, backend systems, and applied AI products."
     />
     <meta name="author" content="Pranav Ojha" />
-    <meta name="theme-color" content="#0b0f14" />
+    <meta name="theme-color" content="#f3f5f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f1723" media="(prefers-color-scheme: dark)" />
     <link rel="canonical" href="https://www.pranavojha.com/" />
     <title>Pranav Ojha — AI &amp; Systems Builder</title>
     <meta property="og:type" content="website" />
@@ -50,12 +51,54 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Overpass:wght@400..800&display=swap"
       rel="stylesheet"
     />
+    <script>
+      // Scroll reveals are opt-in: without this script, IntersectionObserver, or with reduced motion, nothing is hidden.
+      (function () {
+        window.__reveal = function () {};
+        var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (reduce || !("IntersectionObserver" in window)) return;
+        document.documentElement.classList.add("reveal-ready");
+        var observerRan = false;
+        var observer = new IntersectionObserver(
+          function (entries) {
+            observerRan = true;
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.setAttribute("data-revealed", "");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { rootMargin: "0px 0px -6% 0px", threshold: 0.08 }
+        );
+        window.__reveal = function () {
+          document.querySelectorAll("[data-reveal]:not([data-revealed])").forEach(function (el) {
+            observer.observe(el);
+          });
+        };
+        function revealAll() {
+          document.querySelectorAll("[data-reveal]").forEach(function (el) {
+            el.setAttribute("data-revealed", "");
+          });
+        }
+        window.addEventListener("beforeprint", revealAll);
+        // Failsafe: if the observer never reports (a renderer that paints no frames), show everything.
+        window.addEventListener("load", function () {
+          window.setTimeout(function () {
+            if (!observerRan) revealAll();
+          }, 3000);
+        });
+      })();
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </head>
-  <body class="bg-base text-ink antialiased">
+  <body class="bg-paper text-ink antialiased">
     <div id="root"></div>
+    <script>
+      window.__reveal();
+    </script>
   </body>
 </html>
