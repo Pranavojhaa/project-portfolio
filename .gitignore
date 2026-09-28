@@ -1,6 +1,67 @@
+# Dependencies
 node_modules/
+.pnp
+.pnp.js
+.yarn/
+.pnpm-store/
+
+# Build output
 dist/
-.DS_Store
+dist-ssr/
+build/
+*.local
+
+# Vite / tooling caches
+.vite/
+.cache/
+.eslintcache
+.stylelintcache
+*.tsbuildinfo
+coverage/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables and secrets
 .env
-.env.local
+.env.*
+!.env.example
+*.pem
+
+# Deploy platforms
 .vercel/
+.netlify/
+
+# Python (scripts/generate-og-image.py)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# AI assistant / generated knowledge-graph output
+.claude/
+graphify-out/
+
+# Editors and IDEs
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
