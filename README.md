@@ -44,21 +44,19 @@ npm run dev
 
 3. Open the local Vite URL shown in the terminal.
 
-## Build for production
+## Build and search previews
 
 ```bash
 npm run build
+npm run seo:check
 ```
 
-## Deploy to Vercel
+The production build server-renders the portfolio into `dist/index.html` before Vite bundles the client assets. This keeps the portfolio text available in the initial HTML while React hydrates the page in the browser. The build includes the canonical URL, Open Graph and Twitter tags, Person JSON-LD, `robots.txt`, `sitemap.xml`, and the 1200×630 social image.
 
-1. Push this project to GitHub.
-2. Import the repository into Vercel.
-3. Framework preset: `Vite`
-4. Build command: `npm run build`
-5. Output directory: `dist`
+Regenerate the social preview image with Pillow installed:
 
-## Notes
+```bash
+python3 scripts/generate-og-image.py
+```
 
-- Update the email and resume placeholders in `src/data/portfolio.js`.
-- Replace the GitHub search links and demo mail links in `src/data/portfolio.js` with your exact project URLs when available.
+This project is currently served by Vercel. From the project root, deploy it with `npx vercel --prod`; the first CLI run may ask you to link this directory to the existing Vercel project. The build output is `dist`.

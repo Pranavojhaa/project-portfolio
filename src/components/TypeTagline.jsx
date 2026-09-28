@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 
 export function TypeTagline({ text }) {
-  const [visibleText, setVisibleText] = useState("");
+  const [visibleText, setVisibleText] = useState(text);
 
   useEffect(() => {
     let frame = 0;
+    setVisibleText("");
     const timer = window.setInterval(() => {
       frame += 1;
       setVisibleText(text.slice(0, frame));

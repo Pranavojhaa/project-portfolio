@@ -51,6 +51,22 @@ export const skills = [
 
 export const projects = [
   {
+    title: "Nova",
+    summary:
+      "A persistent personal delegation agent with exactly-once actions, bounded authorization, Postgres, and 58 tests; staging and production environments are in progress.",
+    problem:
+      "Delegated actions need to stay replay-safe and within the authority granted for each task.",
+    solution:
+      "A TypeScript action engine uses Postgres-backed execution records, bounded authorization, and exactly-once handling for external effects.",
+    outcome:
+      "The working core has 58 tests; staging and production environments are in progress.",
+    stack: ["TypeScript", "Postgres", "Exactly-Once Actions", "Bounded Authorization", "Vitest"],
+    github: "https://github.com/Pranavojhaa/Nova",
+    demo: "",
+    highlight: "Featured product",
+    featured: true,
+  },
+  {
     title: "The Himalayan Trout House",
     summary:
       "A full-stack client website built with Next.js, Payload CMS, Supabase, Cloudinary, Resend, Google Places reviews, and Vercel deployment.",
