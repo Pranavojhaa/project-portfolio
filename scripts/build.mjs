@@ -35,9 +35,13 @@ const prerenderedHtml = originalHtml.replace(
   `<div id="root">${appMarkup}</div>`
 );
 
+// createServer sets NODE_ENV to "development"; reset it so the client build
+// bundles production React instead of the development build.
+process.env.NODE_ENV = "production";
+
 try {
   await writeFile(indexPath, prerenderedHtml);
-  await build({ root });
+  await build({ root, mode: "production" });
 } finally {
   await writeFile(indexPath, originalHtml);
 }
